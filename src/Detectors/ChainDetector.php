@@ -36,13 +36,15 @@ class ChainDetector implements MimeTypeDetector
 
 	public function detectFromBuffer(string $buffer, ?string $path): ?string
 	{
+		$maybeType = null;
+
 		foreach ($this->detectors as $detector) {
-			$maybeType = $detector->detectFromBuffer($buffer, $path);
+			$maybeType = $detector->detectFromBuffer($buffer, $path) ?? $maybeType;
 			if ($maybeType && !in_array($maybeType, $this->inconclusiveMimeTypes, true)) {
 				return $maybeType;
 			}
 		}
 
-		return null;
+		return $maybeType;
 	}
 }

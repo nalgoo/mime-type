@@ -8,6 +8,7 @@ use Nalgoo\MimeType\Detectors\BufferLimit;
 use Nalgoo\MimeType\Detectors\ExtensionDetector;
 use Nalgoo\MimeType\Detectors\FinfoDetector;
 use Nalgoo\MimeType\Detectors\MagicNumberDetector;
+use Nalgoo\MimeType\Detectors\StaticDetector;
 
 final class MimeTypeDetectorBuilder
 {
@@ -17,6 +18,7 @@ final class MimeTypeDetectorBuilder
 			function_exists('finfo_open') ? new BufferLimit(new FinfoDetector()) : null,
 			new MagicNumberDetector(),
 			new ExtensionDetector(),
+			new StaticDetector(),
 		];
 
 		return new ChainDetector(array_filter($detectors));
