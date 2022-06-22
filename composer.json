@@ -1,0 +1,31 @@
+{
+  "name": "nalgoo/mime-type",
+  "description": "Mime Type detection",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vlado Senasi",
+      "email": "vladimir.senasi@nalgoo.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "suggest": {
+    "ext-fileinfo": "Required for finfo functions"
+  },
+  "require-dev": {
+    "phpunit/phpunit": ">=7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nalgoo\\MimeType\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nalgoo\\MimeType\\Tests\\": "tests/"
+    }
+  }
+}
