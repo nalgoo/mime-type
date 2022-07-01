@@ -10,21 +10,21 @@ class FinfoDetector implements MimeTypeDetector
 	private const SAMPLE_SIZE = 4096;
 
 	/**
-	 * @var null|\finfo|resource
+	 * @var null|resource
 	 */
 	private $finfo;
 
 	public function detectFromBuffer(string $buffer, ?string $path): ?string
 	{
-		$finfo = $this->getInstance();
+		$finfo = $this->getResource();
 
-		return @$finfo->buffer($buffer) ?: null;
+		return @finfo_buffer($finfo, $buffer) ?: null;
 	}
 
 	/**
-	 * @return \finfo
+	 * @return resource
 	 */
-	private function getInstance()
+	private function getResource()
 	{
 		if (!$this->finfo) {
 			$this->finfo = finfo_open(FILEINFO_MIME);
